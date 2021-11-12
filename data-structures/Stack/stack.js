@@ -1,15 +1,15 @@
 class Stack {
-  items;
-  count;
+  #items;
+  #count;
 
   constructor() {
-    this.count = 0;
-    this.items = {};
+    this.#count = 0;
+    this.#items = {};
   }
 
   push(element) {
-    this.items[this.count] = element;
-    this.count++;
+    this.#items[this.#count] = element;
+    this.#count++;
   }
 
   pop() {
@@ -17,11 +17,11 @@ class Stack {
       return undefined;
     }
 
-    this.count--;
+    this.#count--;
 
-    const result = this.items[this.count];
+    const result = this.#items[this.#count];
 
-    delete this.items[this.count];
+    delete this.#items[this.#count];
 
     return result;
   }
@@ -31,17 +31,17 @@ class Stack {
       return undefined;
     }
 
-    const lastPosition = this.count - 1;
+    const lastPosition = this.#count - 1;
 
-    return this.items[lastPosition];
+    return this.#items[lastPosition];
   }
 
   isEmpty() {
-    return this.count === 0;
+    return this.#count === 0;
   }
 
   size() {
-    return this.count;
+    return this.#count;
   }
 
   clear() {
@@ -59,7 +59,7 @@ class Stack {
       return '';
     }
 
-    const items = Object.values(this.items).toString();
+    const items = Object.values(this.#items).toString();
 
     return items;
   }
