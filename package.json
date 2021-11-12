@@ -1,0 +1,9 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:pedrolgcs/data-structures-and-algorithms-with-javaScript.git",
+  "author": "Pedro Henrique <pedro.lg.cs@gmail.com>",
+  "license": "MIT",
+  "type": "module"
+}
