@@ -33,23 +33,4 @@ class Stack {
 
 // ----------------- x -----------------
 
-const stack = new Stack();
-
-console.log('empty:', stack.isEmpty());
-
-stack.push(1);
-stack.push(2);
-
-console.log('last element:', stack.peek());
-
-stack.push(3);
-
-console.log('size:', stack.size());
-console.log('empty:', stack.isEmpty());
-
-stack.push(4);
-
-stack.pop();
-stack.pop();
-
-console.log('size:', stack.size());
+export { Stack };
