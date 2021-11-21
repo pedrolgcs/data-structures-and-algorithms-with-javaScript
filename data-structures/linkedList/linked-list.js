@@ -67,6 +67,84 @@ class LinkedList {
 
     return undefined;
   }
+
+  insert(element, index) {
+    if (index >= 0 && index <= this.count) {
+      const node = new Node(element);
+
+      if (index === 0) {
+        const current = this.head;
+
+        node.next = current;
+
+        this.head = node;
+      } else {
+        const previous = this.getElementAt(index - 1);
+
+        const current = previous.next;
+
+        node.next = current;
+
+        previous.next = node;
+      }
+
+      this.count++;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  remove(element) {
+    const index = this.indexOf(element);
+
+    return this.removeAt(index);
+  }
+
+  indexOf(element) {
+    let current = this.head;
+
+    for (let index = 0; index < this.count; index++) {
+      if (this.equalsFn(element, current.element)) {
+        return index;
+      }
+
+      current = current.next;
+    }
+
+    return -1;
+  }
+
+  size() {
+    return this.count;
+  }
+
+  isEmpty() {
+    return this.size() === 0;
+  }
+
+  getHead() {
+    return this.head;
+  }
+
+  toString() {
+    if (this.head == null) {
+      return '';
+    }
+
+    let objString = `${this.head.element}`;
+
+    let current = this.head.next;
+
+    for (let index = 1; index < this.size(); index++) {
+      objString = `${objString},${current.element}`;
+
+      current = current.next;
+    }
+
+    return objString;
+  }
 }
 
 const list = new LinkedList();
@@ -76,8 +154,4 @@ list.push(2);
 list.push(3);
 list.push(4);
 
-console.log(list.count)
-
-list.removeAt();
-
-console.log(JSON.stringify(list.head));
+console.log(list.toString())
