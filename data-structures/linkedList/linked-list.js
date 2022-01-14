@@ -15,11 +15,9 @@ class LinkedList {
   getElementAt(index) {
     if (index >= 0 && index < this.count) {
       let current = this.head;
-
       for (let i = 0; i < index; i++) {
         current = current.next;
       }
-
       return current;
     }
 
@@ -28,21 +26,17 @@ class LinkedList {
 
   push(element) {
     let current;
-
     const node = new Node(element);
 
     if (this.head == undefined) {
       this.head = node;
     } else {
       current = this.head;
-
       while (current.next != null) {
         current = current.next;
       }
-
       current.next = node;
     }
-
     this.count++;
   }
 
@@ -54,14 +48,10 @@ class LinkedList {
         this.head = current.next;
       } else {
         const previous = this.getElementAt(index - 1);
-
         current = previous.next;
-
         previous.next = current.next;
       }
-
       this.count--;
-
       return current.element;
     }
 
@@ -74,22 +64,16 @@ class LinkedList {
 
       if (index === 0) {
         const current = this.head;
-
         node.next = current;
-
         this.head = node;
       } else {
         const previous = this.getElementAt(index - 1);
-
         const current = previous.next;
-
         node.next = current;
-
         previous.next = node;
       }
 
       this.count++;
-
       return true;
     }
 
@@ -98,7 +82,6 @@ class LinkedList {
 
   remove(element) {
     const index = this.indexOf(element);
-
     return this.removeAt(index);
   }
 
@@ -109,7 +92,6 @@ class LinkedList {
       if (this.equalsFn(element, current.element)) {
         return index;
       }
-
       current = current.next;
     }
 
@@ -147,11 +129,4 @@ class LinkedList {
   }
 }
 
-const list = new LinkedList();
-
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
-
-console.log(list.toString())
+export { LinkedList };
