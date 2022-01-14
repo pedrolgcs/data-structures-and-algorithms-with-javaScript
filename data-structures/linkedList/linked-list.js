@@ -13,7 +13,7 @@ class LinkedList {
   }
 
   getElementAt(index) {
-    if (index >= 0 && index <= this.count) {
+    if (index >= 0 && index < this.count) {
       let current = this.head;
 
       for (let i = 0; i < index; i++) {
@@ -138,7 +138,7 @@ class LinkedList {
     let current = this.head.next;
 
     for (let index = 1; index < this.size(); index++) {
-      objString = `${objString},${current.element}`;
+      objString = `${objString}, ${current.element}`;
 
       current = current.next;
     }
