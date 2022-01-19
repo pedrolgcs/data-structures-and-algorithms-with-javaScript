@@ -10,6 +10,22 @@ class DoublyLinkedList extends LinkedList {
     this.tail = undefined;
   }
 
+  push(element) {
+    const node = new DoublyNode(element);
+    let current = this.head;
+
+    if (this.head == undefined) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.next = this.head;
+      current.prev = node;
+      this.head = node;
+    }
+
+    this.count++;
+  }
+
   insert(element, index) {
     if (index >= 0 && index <= this.count) {
       const node = new DoublyNode(element);
