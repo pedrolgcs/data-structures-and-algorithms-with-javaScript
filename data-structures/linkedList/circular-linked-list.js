@@ -18,9 +18,9 @@ class CircularLinkedList extends LinkedList {
           node.next = this.head;
         } else {
           node.next = current;
-          const lastItem = this.getElementAt(this.size() - 1);
+          current = this.getElementAt(this.size() - 1);
           this.head = node;
-          lastItem.next = this.head;
+          current.next = this.head;
         }
       } else {
         const previous = this.getElementAt(index - 1);
@@ -32,13 +32,42 @@ class CircularLinkedList extends LinkedList {
     }
     return false;
   }
+
+  removeAt(index) {
+    if (index >= 0 && index < this.count) {
+      let current = this.head;
+
+      if (index === 0) {
+        if (this.size() === 1) {
+          this.head = undefined;
+        } else {
+          const removed = this.head;
+          current = this.getElementAt(this.size() -1);
+          this.head = this.head.next;
+          current.next = this.head;
+          current = removed;
+        }
+      } else {
+        const previous = this.getElementAt(index - 1);
+        current = previous.next;
+        previous.next = current.next;
+      }
+      this.count--;
+      return current.element;
+    }
+    return undefined;
+  }
 }
 
 const list = new CircularLinkedList();
 
 list.insert(1, 0);
 list.insert(2, 1);
+list.insert(3, 2);
+list.insert(4, 3);
 
-console.log(list.toString());
+list.removeAt(2);
+
+console.log(list.toString())
 
 export { CircularLinkedList };
