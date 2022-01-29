@@ -40,3 +40,5 @@ class SortedLinkedList extends LinkedList {
     return super.insert(element, position);
   }
 }
+
+export { SortedLinkedList };
