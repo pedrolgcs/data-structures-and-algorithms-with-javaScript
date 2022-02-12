@@ -89,10 +89,4 @@ class DoublyLinkedList extends LinkedList {
   }
 }
 
-const list = new DoublyLinkedList();
-
-list.insert(1, 0);
-list.insert(2, 1);
-list.insert(3, 2);
-
-console.dir(list.head, { depth: null });
+export { DoublyLinkedList };
