@@ -6,23 +6,35 @@ class StackLinkedList {
   }
 
   push(element) {
-    this.items.push(element);
+    this.items.insert(element, this.size());
   }
 
   pop() {
-    if (this.items.isEmpty()) {
+    if (this.isEmpty()) {
       return undefined;
     }
 
-    return this.items.removeAt(this.items.size() - 1);
+    return this.items.removeAt(this.size() - 1);
   }
 
   peek() {
-    if (this.items.isEmpty()) {
+    if (this.isEmpty()) {
       return undefined;
     }
 
-    return this.items.getElementAt(this.items.size() - 1);
+    return this.items.getElementAt(this.size() - 1);
+  }
+
+  isEmpty() {
+    return this.items.isEmpty();
+  }
+
+  size() {
+    return this.items.size();
+  }
+
+  toString() {
+    return this.items.toString();
   }
 }
 
