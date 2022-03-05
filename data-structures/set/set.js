@@ -33,6 +33,18 @@ class MySet {
   size() {
     return Object.keys(this.items).length;
   }
+
+  values() {
+    return Object.values(this.items);
+  }
+
+  valuesLegacy() {
+    let values = [];
+    for (let key in this.items) {
+      values.push(this.items[key]);
+    }
+    return values;
+  }
 }
 
 export { MySet };
