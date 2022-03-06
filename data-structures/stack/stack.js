@@ -45,13 +45,9 @@ class Stack {
   }
 
   clear() {
-    // FIFO
     while (!this.isEmpty()) {
       this.pop();
     }
-
-    // this.items = {};
-    // this.count = 0;
   }
 
   toString() {
