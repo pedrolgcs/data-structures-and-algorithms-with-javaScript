@@ -45,6 +45,55 @@ class MySet {
     }
     return values;
   }
+
+  union(otherSet) {
+    const unionSet = new MySet();
+    let values = this.values();
+    values.forEach((value) => unionSet.add(value));
+    values = otherSet.values();
+    values.forEach((value) => unionSet.add(value));
+    return unionSet;
+  }
+
+  intersection(otherSet) {
+    const intersectionSet = new MySet();
+
+    const values = this.values();
+    const otherValues = otherSet.values();
+
+    let biggerSet = values;
+    let smallerSet = otherValues;
+
+    if (otherSet.size() > this.size()) {
+      biggerSet = otherValues;
+      smallerSet = values;
+    }
+
+    smallerSet.forEach((value) => {
+      if (biggerSet.includes(value)) {
+        intersectionSet.add(value);
+      }
+    });
+
+    return intersectionSet;
+  }
+
+  difference(otherSet) {
+    const differenceSet = new MySet();
+    this.values().forEach((value) => {
+      if (!otherSet.has(value)) {
+        differenceSet.add(value);
+      }
+    });
+    return differenceSet;
+  }
+
+  isSubsetOf(otherSet) {
+    if (this.size() > otherSet.size()) {
+      return false;
+    }
+    return this.values().every((value) => otherSet.has(value));
+  }
 }
 
 export { MySet };
