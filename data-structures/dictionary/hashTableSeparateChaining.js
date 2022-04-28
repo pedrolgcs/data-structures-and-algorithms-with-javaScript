@@ -65,7 +65,7 @@ class HashTableSeparateChaining {
         if (current.element.key === key) {
           linkedList.remove(current.element);
           if (linkedList.isEmpty()) {
-            delete this.table[position];
+            Reflect.deleteProperty(this.table, position);
           }
           return true;
         }
@@ -74,6 +74,18 @@ class HashTableSeparateChaining {
     }
     return false;
   }
+
+  toString() {
+    if (this.table.length === 0) {
+      return '';
+    }
+
+    const keys = Object.keys(this.table);
+
+    return keys.map((key) => {
+      return `${key} => ${this.table[key]}`;
+    }).join(', \n');
+  }
 }
 
 const hash = new HashTableSeparateChaining();
@@ -81,6 +93,10 @@ const hash = new HashTableSeparateChaining();
 hash.put('Jonathan', 'jonathan@email.com');
 hash.put('Jamie', 'jamie@email.com');
 hash.put('Sue', 'sue@email.com');
-hash.remove('Sue');
+hash.put('Gandalf', 'white@email.com');
+hash.put('Dragon', 'red@email.com');
+hash.remove('Jamie');
+
+console.log(hash.toString());
 
 export { HashTableSeparateChaining };

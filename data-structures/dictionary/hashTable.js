@@ -65,8 +65,7 @@ class HashTable {
     }
     const keys = Object.keys(this.table);
 
-    const objString = keys.map((key) => `${key} => ${this.table[key]}`).join(', \n');
-    return objString;
+    return keys.map((key) => `${key} => ${this.table[key]}`).join(', \n');
   }
 }
 
