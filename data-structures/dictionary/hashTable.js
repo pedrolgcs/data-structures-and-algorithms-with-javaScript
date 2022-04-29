@@ -45,7 +45,7 @@ class HashTable {
     const hash = this.hashCode(key);
     const valuePair = this.table[hash];
     if (valuePair != null) {
-      delete this.table[hash];
+      Reflect.deleteProperty(this.table, hash);
       return true;
     }
     return false;

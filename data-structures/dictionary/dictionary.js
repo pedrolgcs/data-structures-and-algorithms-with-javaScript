@@ -25,7 +25,7 @@ class Dictionary {
 
   remove(key) {
     if (this.hasKey(key)) {
-      delete this.table[this.toStrFn(key)];
+      Reflect.deleteProperty(this.table, this.toStrFn(key));
       return true;
     }
     return false;
