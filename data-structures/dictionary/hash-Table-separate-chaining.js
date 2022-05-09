@@ -11,7 +11,7 @@ class HashTableSeparateChaining {
     this.table = {};
   }
 
-  #loseloseHashCode(key) {
+  loseloseHashCode(key) {
     if (typeof key === 'number') {
       return key;
     }
@@ -25,13 +25,13 @@ class HashTableSeparateChaining {
     return hash % 37;
   }
 
-  #hashCode(key) {
-    return this.#loseloseHashCode(key);
+  hashCode(key) {
+    return this.loseloseHashCode(key);
   }
 
   put(key, value) {
     if (key != null && value != null) {
-      const position = this.#hashCode(key);
+      const position = this.hashCode(key);
       if (this.table[position] == null) {
         this.table[position] = new LinkedList();
       }
@@ -42,7 +42,7 @@ class HashTableSeparateChaining {
   }
 
   get(key) {
-    const position = this.#hashCode(key);
+    const position = this.hashCode(key);
     const linkedList = this.table[position];
     if (linkedList != null && !linkedList.isEmpty()) {
       let current = linkedList.getHead();
@@ -57,7 +57,7 @@ class HashTableSeparateChaining {
   }
 
   remove(key) {
-    const position = this.#hashCode(key);
+    const position = this.hashCode(key);
     const linkedList = this.table[position];
     if (linkedList != null && !linkedList.isEmpty()) {
       let current = linkedList.getHead();
@@ -96,7 +96,5 @@ hash.put('Sue', 'sue@email.com');
 hash.put('Gandalf', 'white@email.com');
 hash.put('Dragon', 'red@email.com');
 hash.remove('Jamie');
-
-console.log(hash.toString());
 
 export { HashTableSeparateChaining };
