@@ -1,4 +1,3 @@
-import { defaultToString } from '../../shared/util.js';
 import { ValuePair } from '../../shared/models/value-pair.js';
 import { HashTableSeparateChaining } from './hash-Table-separate-chaining.js';
 
