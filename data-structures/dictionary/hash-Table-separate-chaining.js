@@ -25,8 +25,17 @@ class HashTableSeparateChaining {
     return hash % 37;
   }
 
+  djb2HashCode(key) {
+    const tableKey = this.toStrFn(key);
+    let hash = 5381;
+    for (let i = 0; i < tableKey.length; i++) {
+      hash = hash * 33 + tableKey.charCodeAt(i);
+    }
+    return hash % 1013;
+  }
+
   hashCode(key) {
-    return this.loseloseHashCode(key);
+    return this.djb2HashCode(key);
   }
 
   put(key, value) {
@@ -82,9 +91,11 @@ class HashTableSeparateChaining {
 
     const keys = Object.keys(this.table);
 
-    return keys.map((key) => {
-      return `${key} => ${this.table[key]}`;
-    }).join(', \n');
+    return keys
+      .map((key) => {
+        return `${key} => ${this.table[key]}`;
+      })
+      .join(', \n');
   }
 }
 
@@ -96,5 +107,7 @@ hash.put('Sue', 'sue@email.com');
 hash.put('Gandalf', 'white@email.com');
 hash.put('Dragon', 'red@email.com');
 hash.remove('Jamie');
+
+console.log(hash.toString());
 
 export { HashTableSeparateChaining };
