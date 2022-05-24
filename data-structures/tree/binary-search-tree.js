@@ -1,5 +1,5 @@
 import { Compare, defaultCompare } from '../../shared/util.js';
-import { Node } from '../../shared/models/node';
+import { Node } from '../../shared/models/node.js';
 
 class BinarySearchTree {
   root;
@@ -10,6 +10,22 @@ class BinarySearchTree {
     this.root = null;
   }
 
+  insertNode(node, key) {
+    if (this.compareFn(key, node.key) === Compare.LESS_THAN) {
+      if (node.left == null) {
+        node.left = new Node(key);
+      } else {
+        this.insertNode(node.left, key);
+      }
+    } else {
+      if (node.right == null) {
+        node.right = new Node(key);
+      } else {
+        this.insertNode(node.right, key);
+      }
+    }
+  }
+
   insert(key) {
     if (this.root == null) {
       this.root = new Node(key);
@@ -17,6 +33,38 @@ class BinarySearchTree {
       this.insertNode(this.root, key);
     }
   }
+
+  inOrderTraverseNode(node, callback) {
+    if (node != null) {
+      this.inOrderTraverseNode(node.left, callback);
+      callback(node.key);
+      this.inOrderTraverseNode(node.right, callback);
+    }
+  }
 }
 
+const tree = new BinarySearchTree();
+
+tree.insert(11);
+tree.insert(7);
+tree.insert(15);
+tree.insert(5);
+tree.insert(3);
+tree.insert(9);
+tree.insert(8);
+tree.insert(10);
+tree.insert(13);
+tree.insert(12);
+tree.insert(14);
+tree.insert(20);
+tree.insert(18);
+tree.insert(25);
+tree.insert(6);
+
+const printNode = (value) => console.log(value);
+
+tree.inOrderTraverseNode(tree.root, printNode);
+
 export { BinarySearchTree };
+
+// page 367
