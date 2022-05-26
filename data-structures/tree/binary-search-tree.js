@@ -69,6 +69,34 @@ class BinarySearchTree {
   postOrderTraverse(callback) {
     this.postOrderTraverseNode(this.root, callback);
   }
+
+  minNode(node) {
+    let current = node;
+
+    while (current != null && current.left != null) {
+      current = current.left;
+    }
+
+    return current;
+  }
+
+  min() {
+    return this.minNode(this.root);
+  }
+
+  maxNode(node) {
+    let current = node;
+
+    while (current != null && current.right != null) {
+      current = current.right;
+    }
+
+    return current;
+  }
+
+  max() {
+    return this.maxNode(this.root);
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -89,9 +117,7 @@ tree.insert(18);
 tree.insert(25);
 tree.insert(6);
 
-const printNode = (value) => console.log(value);
-
-tree.inOrderTraverse(printNode);
-// tree.preOrderTraverse(tree.root.left, printNode);
+console.log(tree.min());
+console.log(tree.max());
 
 export { BinarySearchTree };
